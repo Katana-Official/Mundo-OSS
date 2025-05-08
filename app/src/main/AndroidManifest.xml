@@ -41,6 +41,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SampleVoidAbility"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:label="@string/sample_label_launcher"
+            android:icon="@mipmap/ic_sample_launcher"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:noHistory="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

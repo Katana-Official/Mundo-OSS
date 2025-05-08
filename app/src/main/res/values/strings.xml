@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mundo API Demo</string>
+    <string name="sample_label_launcher">WeChat</string>
 </resources>
