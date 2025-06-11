@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
@@ -30,6 +29,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import es.mundosoft.sample.BuildCompatUtils;
 import net_62v.external.MetaActivationManager;
 import net_62v.external.MetaActivityManager;
 import net_62v.external.MetaApplicationInstaller;
@@ -193,7 +194,7 @@ public class AppTestCloneActivity extends AppCompatActivity {
     {
         try{
             final boolean is64Bit;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (BuildCompatUtils.isAtLeastM()) {
                 is64Bit = Process.is64Bit();
             }
             else is64Bit = true;
@@ -453,7 +454,7 @@ public class AppTestCloneActivity extends AppCompatActivity {
                     this,
                     MyService.class
             );
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            if(BuildCompatUtils.isAtLeastO())
                 startForegroundService(serviceIntent);
             else startService(serviceIntent);
         }catch (Exception e)

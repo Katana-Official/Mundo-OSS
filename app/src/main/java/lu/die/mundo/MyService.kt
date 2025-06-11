@@ -8,9 +8,9 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
-import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import es.mundosoft.sample.BuildCompatUtils
 
 class MyService : Service() {
     override fun onBind(intent: Intent?): IBinder? {
@@ -20,7 +20,7 @@ class MyService : Service() {
     override fun onCreate() {
         super.onCreate()
         try{
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+            if(BuildCompatUtils.isAtLeastU())
             {
                 startForeground(
                     12580,
@@ -55,7 +55,7 @@ class MyService : Service() {
             .setOngoing(isOngoing) //设置持续(不消失的常驻通知)
             .setCategory(category) //设置类别
             .setPriority(NotificationCompat.PRIORITY_MAX) //优先级为：重要通知
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { //安卓8.0以上系统要求通知设置Channel,否则会报错
+        if (BuildCompatUtils.isAtLeastO()) { //安卓8.0以上系统要求通知设置Channel,否则会报错
             val notificationChannel =
                 NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW)
             notificationChannel.lockscreenVisibility = NotificationCompat.VISIBILITY_SECRET //锁屏显示通知
